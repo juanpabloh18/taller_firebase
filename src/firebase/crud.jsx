@@ -15,8 +15,12 @@ const crud = () => {
 
     const add = async () => {
 
-        const addData = await addDoc(dbref, { Name: nombre, Email: email, Telefono: telefono })
-       
+        await addDoc(dbref, { Name: nombre, Email: email, Telefono: telefono })
+        setNombre("");
+        setEmail("");
+        setTelefono("");
+
+
     }
 
     const fetch = async () => {
@@ -47,8 +51,8 @@ const crud = () => {
         const updateteref = doc(dbref, id)
         try {
             await updateDoc(updateteref, { Name: nombre, Email: email, Telefono: telefono })
-           
-            
+
+
         }
         catch (error) {
             alert(error, "no se actualizo")
@@ -61,8 +65,8 @@ const crud = () => {
         const delref = doc(dbref, id)
         try {
             await deleteDoc(delref)
-            
-            
+
+
         }
         catch (error) {
             alert(error)
@@ -89,9 +93,9 @@ const crud = () => {
                 </div>
                 <button onClick={async () => {
                     await add();
-                    await fetch(); 
+                    await fetch();
                 }}>agregar</button>
-                <button onClick={async () =>{
+                <button onClick={async () => {
                     await update();
                     await fetch();
                 }}>actualizar</button>
@@ -108,7 +112,7 @@ const crud = () => {
                                         <h2>correo: {data.Email}</h2>
                                         <h2>Telefono: {data.Telefono}</h2>
                                         <button onClick={() => passData(data.id)}>actualizar</button>
-                                        <button onClick={ async() => {
+                                        <button onClick={async () => {
                                             await del(data.id);
                                             await fetch();
                                         }}>Eliminar</button>
