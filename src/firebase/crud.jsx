@@ -81,7 +81,7 @@ const crud = () => {
     return (
         <>
             <div className="form_container">
-                <h2>Add/ Update Form</h2>
+                <h2>Ingresa tus datos </h2>
                 <div className="box">
                     <input type="text" placeholder="nombre" autoComplete="off" value={nombre} onChange={(e) => setNombre(e.target.value)}></input>
                 </div>
